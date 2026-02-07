@@ -23,9 +23,24 @@ ALN System Update Orchestrator is a Rust-based service that executes the `@ALN_S
 
 ## Running locally
 
-
+```bash
 cargo build --release
 ./target/release/aln-system-update-orchestrator
+
+
+Configure Kafka, PostgreSQL, and Redis via config/*.toml.
+
+text
+
+***
+
+### `config/kafka.toml`
+
+```toml
+bootstrap_servers = "localhost:9092"
+file_update_topic = "aln_file_update"
+progress_topic = "aln_update_progress"
+group_id = "aln-system-update-orchestrator"
 
 aln-system-update-orchestrator/
 ├─ Cargo.toml
