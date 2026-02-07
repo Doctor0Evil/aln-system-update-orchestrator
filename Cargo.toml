@@ -1,0 +1,20 @@
+[package]
+name = "aln-system-update-orchestrator"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.39", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+anyhow = "1.0"
+thiserror = "1.0"
+rdkafka = { version = "0.36", features = ["cmake-build", "tokio"] }    # [web:15][web:16][web:23]
+tokio-postgres = "0.7"                                                # [web:20][web:24]
+rustis = { version = "0.15", features = ["pool", "tokio-rustls"] }    # [web:21]
+reqwest = { version = "0.12", features = ["json", "rustls-tls"] }
+uuid = { version = "1.10", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"] }
