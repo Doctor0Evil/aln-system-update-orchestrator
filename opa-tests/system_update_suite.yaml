@@ -1,0 +1,10 @@
+tests:
+  - name: allow_valid_update
+    bundle: ./aln
+    path: aln_system_update/update
+    input:
+      repo_structure:
+        compliant_with: modular_aln
+      version_history:
+        tracked_with: commits
+    expect_result: true
