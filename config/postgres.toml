@@ -1,0 +1,3 @@
+connection_string = "postgres://aln_user:aln_password@localhost/aln_updates"
+aln_update_table = "aln_update_data"
+update_log_table = "update_log_v1_7"
