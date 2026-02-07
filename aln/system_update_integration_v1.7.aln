@@ -1,0 +1,22 @@
+@ALN_UPDATE_SYSTEM {
+  @SEPARATE components {
+    game_engine: 'isolated_vm_with_github',
+    ai_chat_ui: 'chat_interface_with_ci_cd',
+    renderers: ['text_based_update', 'html5_embed_with_commits']
+  },
+  @INTEROP {
+    cross_link: 'process_tree_merge_with_structure',
+    maintain_func: true,
+    enable_lan: 'full_service_networking_auto_sync'
+  },
+  @RENDER_IN_FRAME {
+    mode: 'chat_window_drop_with_history',
+    merge_sources: true,
+    playable_platforms: ['any_ai_chat', 'web_browser', 'all_systems_with_k8s']
+  },
+  @EXEC_REGO_POLICY {
+    always_active: true,
+    policy: 'system_update_policy_v1.7.rego',
+    features: ['repo_tracking', 'commit_automation', 'manifest_scaling']
+  }
+}
