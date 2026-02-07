@@ -1,5 +1,31 @@
-# aln-system-update-orchestrator
-A  Rust + Rego + ALN repository that implements the full @ALN_SYSTEM_UPDATE pipeline as a real service.  Rust core:  Reads .aln spec files, parses update plans, orchestrates steps (file processing, GitHub sync, VM deploy, DB sync).  Kafka producer/consumer for aln_file_update and aln_update_progress topics.
+# ALN System Update Orchestrator
+
+ALN System Update Orchestrator is a Rust-based service that executes the `@ALN_SYSTEM_UPDATE` pipeline as a real, zero-trust, policy-as-code update engine for GitHub-backed systems.
+
+## Features
+
+- Parses `.aln` update specs and orchestrates:
+  - File processing.
+  - GitHub integration and commits.
+  - VM deployment hooks.
+  - Database and cache synchronization.
+- Publishes and consumes Kafka topics:
+  - `aln_file_update` for file update events.
+  - `aln_update_progress` for progress metrics.
+- Persists update metadata to:
+  - PostgreSQL table `aln_update_data`.
+  - PostgreSQL table `update_log_v1.7`.
+  - Redis keys `aln_update_state_1.0.1.7:{token_id}`.
+- Uses OPA / Rego (`system_update_policy_v1.7.rego`) to validate:
+  - Repo structure.
+  - Version history tracking.
+  - K8s manifest scaling rules.
+
+## Running locally
+
+
+cargo build --release
+./target/release/aln-system-update-orchestrator
 
 aln-system-update-orchestrator/
 ├─ Cargo.toml
