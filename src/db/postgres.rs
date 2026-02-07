@@ -30,16 +30,33 @@ pub async fn connect(cfg: Config) -> Result<PgPool> {
     Ok(client)
 }
 
-pub async fn insert_update_record(
+pub async fn insert_update_log(
     client: &PgPool,
+    token_id: &str,
     version: &str,
-    features: &[String],
+    files_processed: i32,
+    features_added: i32,
+    compliance_score: Option<f64>,
+    latency: Option<&str>,
+    sync_status: Option<&str>,
+    raw_payload: &serde_json::Value,
 ) -> Result<()> {
-    let data = Value::from(features.to_vec());
     client
         .execute(
-            "INSERT INTO aln_update_data (version, data) VALUES ($1, $2)",
-            &[&version, &data],
+            "INSERT INTO update_log_v1_7 \
+             (token_id, version, files_processed, features_added, \
+              compliance_score, latency, sync_status, raw_payload) \
+             VALUES ($1,$2,$3,$4,$5,$6,$7,$8)",
+            &[
+                &token_id,
+                &version,
+                &files_processed,
+                &features_added,
+                &compliance_score,
+                &latency,
+                &sync_status,
+                raw_payload,
+            ],
         )
         .await?;
     Ok(())
