@@ -18,3 +18,4 @@ uuid = { version = "1.10", features = ["v4", "serde"] }
 chrono = { version = "0.4", features = ["serde"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"] }
+actix-web = "4.9"  # HTTP health/status server [web:45][web:46][web:49][web:52]
